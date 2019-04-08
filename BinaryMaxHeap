@@ -1,0 +1,94 @@
+package assign10;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+public class BinaryMaxHeap <E> implements PriorityQueue<E> {
+	
+	/* Keeps track of the size */
+	private int size = 0; 
+	
+	
+	/**
+	 * If this constructor is used to create an empty binary heap, it is assumed that the elements are ordered using their natural ordering 
+	 * (i.e., E implements Comparable<? super E>).
+	 */
+	public BinaryMaxHeap ()
+	{
+		
+	}
+	
+	
+	/**
+	 * If this constructor is used to create an empty binary heap, it is assumed that the elements are ordered using the provided Comparator object.
+	 */
+	public BinaryMaxHeap(Comparator<? super E> cmp)
+	{
+		
+	}
+	
+
+	/**
+	 * If this constructor is used, then the binary heap is constructed from the given list.  Also, it is assumed that the elements are ordered using
+	 *  their natural ordering (i.e., E implements Comparable<? super E>).  RECALL: Using the buildHeap operation, we can construct a binary heap 
+	 *  from these N items in O(N) time, which is more efficient than adding them to the binary heap one at a time.  This constructor use such an 
+	 *  operation.
+	 */
+	public BinaryMaxHeap(List<? extends E> list)
+	{
+		
+	}
+	
+	/**
+	 * If this constructor is used, then the binary heap is constructed from the given list (see RECALL note above).  Also, it is assumed that the 
+	 * elements are ordered using the provided Comparator object.
+	 */
+	public BinaryMaxHeap(List<? extends E> list, Comparator<? super E> cmp)
+	{
+		
+	}
+	
+	@Override
+	public void add(E item) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public E peek() throws NoSuchElementException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E extractMax() throws NoSuchElementException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Object[] toArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
