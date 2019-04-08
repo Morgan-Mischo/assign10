@@ -49,6 +49,43 @@ public class BinaryMaxHeap <E> implements PriorityQueue<E> {
 		
 	}
 	
+	/**
+	 * Helper method for buildHeap
+	 * @return 
+	 */
+	
+	private void buildHeap()
+	{
+		
+	}
+	
+	/**
+	 * Helper method for percolateUp
+	 */
+	
+	private void percolateUp ()
+	{
+		
+	}
+	
+	/** 
+	 * Helper method for percolateDown
+	 */
+	
+	private void percolateDown ()
+	{
+		
+	}
+	
+	/**
+	 * Helper method for innerCompare
+	 */
+	
+	private int innerCompare ()
+	{
+		return 0; 
+	}
+	
 	@Override
 	public void add(E item) {
 		// TODO Auto-generated method stub
