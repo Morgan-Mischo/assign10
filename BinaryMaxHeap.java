@@ -146,7 +146,7 @@ public class BinaryMaxHeap <E> implements PriorityQueue<E> {
 		}
 		
 		//Case if there is both a left and right child
-		else if (index * 2 + 1 < size && index * 2 < size)
+		else
 		{
 			left = binaryHeap[index * 2]; 
 			right = binaryHeap[index * 2 + 1]; 

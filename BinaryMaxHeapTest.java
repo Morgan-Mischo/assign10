@@ -45,8 +45,21 @@ class BinaryMaxHeapTest {
 	}
 
 	@Test
+	void smallList() {
+		ArrayList<Integer> myList = new ArrayList<Integer>();
+		myList.add(5);
+		myList.add(10);
+		myList.add(1);
+		
+		BinaryMaxHeap<Integer> sut = new BinaryMaxHeap<Integer>(myList);
+		assertEquals(10, sut.extractMax());
+		assertEquals(5, sut.peek());
+	}
+	
+	@Test
 	void innerCompare() {
 		List<Integer> small = integerList(4);
+		@SuppressWarnings("unused")
 		BinaryMaxHeap<Integer> sut = new BinaryMaxHeap<Integer>(small);
 	}
 	
