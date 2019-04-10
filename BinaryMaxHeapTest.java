@@ -136,4 +136,14 @@ class BinaryMaxHeapTest {
 		sut.add(15);
 		assertEquals(15, sut.extractMax());
 	}
+	
+	@Test
+	void resize() {
+		BinaryMaxHeap<Integer> sut = new BinaryMaxHeap<Integer>();
+		for(int i = 0; i < 49; i++)
+		{
+			sut.add(i);
+		}
+		sut.add(353);
+	}
 }

@@ -197,7 +197,7 @@ public class BinaryMaxHeap <E> implements PriorityQueue<E> {
 			capacity *= 2;
 			@SuppressWarnings("unchecked")
 			E[] newBinaryHeap = (E []) new Object [capacity]; 
-			for(int i = 1; i < size; i++)
+			for(int i = 1; i < size + 1; i++)
 			{
 				newBinaryHeap[i] = binaryHeap[i];
 			}
@@ -247,6 +247,7 @@ public class BinaryMaxHeap <E> implements PriorityQueue<E> {
 	@Override
 	public void clear() {
 		size = 0;
+		capacity = 50;
 		binaryHeap = (E[]) new Object[50];
 		cmp = null;
 		return;
