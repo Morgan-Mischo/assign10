@@ -11,9 +11,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class BinaryMaxHeapTest {
+	
+	List<String> sList = new ArrayList<String>();
 
 	@BeforeEach
 	void setUp() throws Exception {
+		sList.add("a");
+		sList.add("b");
+		sList.add("c");
+		sList.add("ef");
+		sList.add("giraffe");
 	}
 
 	@AfterEach
@@ -59,6 +66,7 @@ class BinaryMaxHeapTest {
 		assertEquals(92, sut.extractMax());
 		
 		assertEquals(91, sut.extractMax());
+		sut.toArray();
 	}
 	
 	@Test
@@ -87,10 +95,32 @@ class BinaryMaxHeapTest {
 	}
 	
 	@Test
-	void add() {
+	void add_MaxChanges() {
 		List<Integer> large = integerList(10);
 		
+		BinaryMaxHeap<Integer> sut = new BinaryMaxHeap<Integer>(large);
+		assertTrue(sut.peek() == 92);
+		
+		sut.add(145);
+		assertTrue(sut.peek() == 145);
+		
+		sut.add(97);
+		assertTrue(sut.peek() == 145);
+	}
+	
+	@Test
+	void stringList() {
+		BinaryMaxHeap<String> sut = new BinaryMaxHeap<String>(sList);
+		assertFalse(sut.isEmpty());
+		
+		sut.add("turkey");
+		assertEquals("turkey", sut.extractMax());
+	}
+	
+	@Test
+	void fromEmpty() {
 		BinaryMaxHeap<Integer> sut = new BinaryMaxHeap<Integer>();
-		assertTrue(sut.isEmpty());
+		sut.add(15);
+		assertEquals(15, sut.extractMax());
 	}
 }

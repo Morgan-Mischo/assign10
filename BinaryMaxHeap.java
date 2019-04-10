@@ -87,12 +87,12 @@ public class BinaryMaxHeap <E> implements PriorityQueue<E> {
 	/**
 	 * Helper method for percolateUp
 	 */
-	
 	private void percolateUp (int index, E element)
 	{
 		//Element is max
 		if (index == 1)
 		{
+			binaryHeap[1] = element;
 			return;
 		}
 		
@@ -102,13 +102,13 @@ public class BinaryMaxHeap <E> implements PriorityQueue<E> {
 		if (innerCompare(element, parent) > 0)
 		{
 			binaryHeap[index] = parent;
-			binaryHeap[index/2] = element;
-			index = index/2;
+			index = index / 2;
 			percolateUp(index, element);
 		}
 		
 		//Child is no longer greater than parent
 		else {
+			binaryHeap[index] = element;
 			return;
 		}
 	}
@@ -116,15 +116,15 @@ public class BinaryMaxHeap <E> implements PriorityQueue<E> {
 	/** 
 	 * Helper method for percolateDown
 	 */
-	
 	private void percolateDown (int index, E element)
 	{
-		E left = null; 
-		E right = null;
+		E left; 
+		E right;
 		
 		// Case if there are no left and right children
 		if (index * 2 > size)
 		{
+			binaryHeap[index] = element;
 			return;
 		}
 		
@@ -134,11 +134,11 @@ public class BinaryMaxHeap <E> implements PriorityQueue<E> {
 			left = binaryHeap[index * 2]; 
 			if (innerCompare(element, left) > 0)
 			{
+				binaryHeap[index] = element;
 				return;
 			}
 			else
 			{
-				binaryHeap[index * 2] = element;
 				binaryHeap[index] = left;
 				index = index * 2;
 				percolateDown(index, element);
@@ -153,20 +153,18 @@ public class BinaryMaxHeap <E> implements PriorityQueue<E> {
 			
 			if (innerCompare(element, left) > 0 && innerCompare(element, right) > 0)
 			{
-				//binaryHeap[index] = element;
+				binaryHeap[index] = element;
 				return; 
 			}
 			
 			if (innerCompare(left, right) > 0)
 			{
-				binaryHeap[index * 2] = element;
 				binaryHeap[index] = left;
 				index = index * 2;
 				percolateDown(index, element);
 			}
 			else
 			{
-				binaryHeap[index * 2 + 1] = element;
 				binaryHeap[index] = right;
 				index = index * 2 + 1;
 				percolateDown(index, element);
@@ -177,6 +175,7 @@ public class BinaryMaxHeap <E> implements PriorityQueue<E> {
 	/**
 	 * Helper method for innerCompare
 	 */	
+	@SuppressWarnings("unchecked")
 	private int innerCompare (E obj1, E obj2)
 	{
 		if (cmp != null)
@@ -193,9 +192,10 @@ public class BinaryMaxHeap <E> implements PriorityQueue<E> {
 	@Override
 	public void add(E item) {
 		//Copy old array if capacity is reached
-		if (size == capacity)
+		if (size == capacity - 1)
 		{
 			capacity *= 2;
+			@SuppressWarnings("unchecked")
 			E[] newBinaryHeap = (E []) new Object [capacity]; 
 			for(int i = 1; i < size; i++)
 			{
@@ -243,10 +243,11 @@ public class BinaryMaxHeap <E> implements PriorityQueue<E> {
 		return size == 0;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void clear() {
 		size = 0;
-		binaryHeap = (E []) new Object [50];
+		binaryHeap = (E[]) new Object[50];
 		cmp = null;
 		return;
 	}
@@ -254,7 +255,7 @@ public class BinaryMaxHeap <E> implements PriorityQueue<E> {
 	@Override
 	public Object[] toArray() {
 		Object[] arr = new Object[size];
-		for(int i = 1; i < size; i++)
+		for(int i = 1; i < size + 1; i++)
 		{
 			arr[i - 1] = binaryHeap[i];
 		}
