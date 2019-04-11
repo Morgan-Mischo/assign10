@@ -1,3 +1,4 @@
+
 package assign10;
 
 import java.util.Collections;
@@ -20,12 +21,12 @@ public class BinaryMaxHeapTiming {
 	 */
 	private static void experiment3() {
 		
-		System.out.println("N" + "\t" + "add" + "\t" + "peek");
+		System.out.println("N" + "\t" + "add" + "\t" + "peek" + "\t" + "extractMax");
 		
 		for (int i = 1000; i < problemSize + 1; i+=1000)
 		{
-			System.out.println(testAdd(i) + "\t");
-//		+ testPeek(i) + "\t" + testExtractMax(i)) + "\n";
+			System.out.println(i + "\t" + testAdd(i) + "\t" + testPeek(i) + "\t" + testExtractMax(i) + "\n");
+					
 		}
 	}
 	
@@ -75,15 +76,101 @@ public class BinaryMaxHeapTiming {
 		return averageTime + "";
 	}
 	
-	private String testPeek(int i)
+	private static String testPeek(int i)
 	{
-		return null;
+		BinaryMaxHeap<Integer> myHeap = new BinaryMaxHeap<Integer>();
+		long startTime, midpointTime, stopTime = System.nanoTime();
+
+		// First, spin computing stuff until one second has gone by.
+		// This allows this thread to stabilize.
+		startTime = System.nanoTime();
+		while (System.nanoTime() - startTime < 1000000000) { 
+			// empty block
+		}
+
+		// Now, run the test.
+		startTime = System.nanoTime();
+
+		for(int j = 0; j < TIMES_TO_LOOP; j++)
+		{
+			for(int k = 0; k < i; k++)
+			{
+				myHeap.add(k);
+				myHeap.peek(); 
+			}
+			myHeap.clear();
+		}
+
+		midpointTime = System.nanoTime();
+
+		// Run a loop to capture the cost of running the "timesToLoop" loop and
+		// generating a random ISBN.
+		
+		for(int j = 0; j < TIMES_TO_LOOP; j++)
+		{
+			for(int k = 0; k < i; k++)
+			{
+				myHeap.add(k);
+			}
+			myHeap.clear();
+		}
+		stopTime = System.nanoTime();
+
+		// Compute the time, subtract the cost of running the loop
+		// from the cost of running the loop and doing the lookups.
+		// Average it over the number of runs.
+		double averageTime = (double) ((midpointTime - startTime) - (stopTime - midpointTime))
+				/ (TIMES_TO_LOOP);
+		return averageTime + "";
 		
 	}
 	
-	private String testExtractMax(int i)
+	private static String testExtractMax(int i)
 	{
-		return null;
+		BinaryMaxHeap<Integer> myHeap = new BinaryMaxHeap<Integer>();
+		long startTime, midpointTime, stopTime = System.nanoTime();
+
+		// First, spin computing stuff until one second has gone by.
+		// This allows this thread to stabilize.
+		startTime = System.nanoTime();
+		while (System.nanoTime() - startTime < 1000000000) { 
+			// empty block
+		}
+
+		// Now, run the test.
+		startTime = System.nanoTime();
+
+		for(int j = 0; j < TIMES_TO_LOOP; j++)
+		{
+			for(int k = 0; k < i; k++)
+			{
+				myHeap.add(k);	
+			}
+			myHeap.extractMax(); 
+			myHeap.clear();
+		}
+
+		midpointTime = System.nanoTime();
+
+		// Run a loop to capture the cost of running the "timesToLoop" loop and
+		// generating a random ISBN.
+		
+		for(int j = 0; j < TIMES_TO_LOOP; j++)
+		{
+			for(int k = 0; k < i; k++)
+			{
+				myHeap.add(k);
+			}
+			myHeap.clear();
+		}
+		stopTime = System.nanoTime();
+
+		// Compute the time, subtract the cost of running the loop
+		// from the cost of running the loop and doing the lookups.
+		// Average it over the number of runs.
+		double averageTime = (double) ((midpointTime - startTime) - (stopTime - midpointTime))
+				/ (TIMES_TO_LOOP);
+		return averageTime + "";
 		
 	}
 
