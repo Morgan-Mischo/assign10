@@ -11,7 +11,7 @@ public class BinaryMaxHeapTiming {
 	
 	public static<E> void main (String[] args) {
 		
-		experiment3();
+		//experiment3();
 		experiment5and6 ();
 	}
 
@@ -199,13 +199,13 @@ public class BinaryMaxHeapTiming {
 		// Now, run the test.
 		startTime = System.nanoTime();
 
-		for(int j = 0; j < TIMES_TO_LOOP; j++)
+		for(int j = 1; j < 10; j++)
 		{
-			myList.add(j); 
 			for(int k = 0; k < i; k++)
 			{
-				FindKLargest.findKLargestHeap(myList, k); 
+				myList.add(k);  
 			}
+			FindKLargest.findKLargestHeap(myList, j); 
 		}
 
 		midpointTime = System.nanoTime();
@@ -213,11 +213,11 @@ public class BinaryMaxHeapTiming {
 		// Run a loop to capture the cost of running the "timesToLoop" loop and
 		// generating a random ISBN.
 		
-		for(int j = 0; j < TIMES_TO_LOOP; j++)
-		{
-			myList.add(j); 
+		for(int j = 1; j < 10; j++)
+		{ 
 			for(int k = 0; k < i; k++)
 			{
+				myList.add(k);
 			}
 		}
 		stopTime = System.nanoTime();
@@ -245,13 +245,13 @@ public class BinaryMaxHeapTiming {
 		// Now, run the test.
 		startTime = System.nanoTime();
 
-		for(int j = 0; j < TIMES_TO_LOOP; j++)
+		for(int j = 1; j < 10; j++)
 		{
-			myList.add(j); 
 			for(int k = 0; k < i; k++)
 			{
-				FindKLargest.findKLargestSort(myList, k); 
+				myList.add(k); 
 			}
+			FindKLargest.findKLargestSort(myList, j); 
 		}
 
 		midpointTime = System.nanoTime();
@@ -259,11 +259,12 @@ public class BinaryMaxHeapTiming {
 		// Run a loop to capture the cost of running the "timesToLoop" loop and
 		// generating a random ISBN.
 		
-		for(int j = 0; j < TIMES_TO_LOOP; j++)
+		for(int j = 1; j < 10; j++)
 		{
-			myList.add(j); 
+			
 			for(int k = 0; k < i; k++)
 			{
+				myList.add(k); 
 			}
 		}
 		stopTime = System.nanoTime();
